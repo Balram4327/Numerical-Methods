@@ -35,7 +35,7 @@ for(int i=0;i<=o;i++)
 
 float df = 0;
      
-start = clock();
+
 /*
 while(res==0)
     {
@@ -59,24 +59,29 @@ scanf("%f",&c);
 //printf("Enter the number of iterations \n");
 //scanf("%d",&n);
 
-
-while(abs(f)>0.000001)
+res=0;
+start = clock();
+while(res==0)
     {
         df = derivate(cofs,o,c);
         f = fun(cofs,o,c);
 
         c = c - (f / df);
-        
+   
+         if(abs(f)<0.00001)
+        res=2;
+
         count++;
     }
+end = clock(); //time count stops 
 
-printf("Number of iteratino %f \n",count);
+printf("Number of iteratino %d \n",count);
 printf("Root value is: \n %f",c);
 
-end = clock();
-	//time count stops 
-	total_time = ((double) (end - start)) /  CLOCKS_PER_SEC;
-	//calulate total time
+
+	
+	total_time = ((double) (end - start)) /  CLOCKS_PER_SEC; //calculating time taken
+	
 	printf("\nTime taken: %f", total_time);
 
     return 0;

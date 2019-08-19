@@ -9,17 +9,17 @@ float fun(float [], int, float );
 int main()
 {
 
-    double total_time;
+double total_time;
 clock_t start, end;
 
 
 float arr[3];
 
 int o; //order of the polynomial
-int n; //number of iterations
+int res=0;
+int count=0;
 
 float f = 0; //value of f
-int count = 0; 
 
 printf("Enter order of the polynomial \n");
 scanf("%d",&o);
@@ -37,27 +37,26 @@ for(int i=0;i<=o;i++)
         printf("Enter upper limit: \n");
         scanf("%f",&arr[1]);
 
-printf("Enter the number of iterations \n");
-scanf("%d",&n);
 start = clock();
-
 if(abs(fun(cofs,o,arr[0]))<abs(fun(cofs,o,arr[1])))
     {
         f = arr[0];
         arr[0]=arr[1];
         arr[1]=f;
     }
-
-while(count<n)
+res=0;
+while(res==0)
     {
         arr[2] = arr[1] - ((fun(cofs,o,arr[1]))*(arr[1]-arr[0]))/(fun(cofs,o,arr[1])-fun(cofs,o,arr[0]));
         f = fun(cofs,o,arr[2]);
-        count++;
-        printf("%f ", arr[2]);
-
+        
         arr[0]=arr[1];
         arr[1]=arr[2];
 
+     if(abs(f)<0.00001)
+        res=2;
+
+        count++;
 
     }
 end = clock();

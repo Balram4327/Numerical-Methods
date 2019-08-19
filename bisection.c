@@ -21,7 +21,7 @@ int o; //order of the polynomial
 float f;
 int res=0;
 int count=0;
-int n;
+
 
 printf("Enter order of the polynomial \n");
 scanf("%d",&o);
@@ -47,11 +47,9 @@ while(res==0)
             printf("Enter the limits again! \n");
     }
 
-//printf("Enter the number of iterations \n");
-//scanf("%d",&n);
 
-start = clock();
 res=0;
+start = clock();
 while(res==0)
     {
         c = (b+a)/2;
@@ -67,14 +65,13 @@ while(res==0)
 
         count++;
     }
-
-end = clock();
+end = clock(); //time count stops 
 printf("Iterations taken: %d \n",count);
 printf("Root value is: \n %f",c);
 
-	//time count stops 
-	total_time = ((double) (end - start)) /  CLOCKS_PER_SEC;
-	//calulate total time
+	
+	total_time = ((double) (end - start)) /  CLOCKS_PER_SEC; //calculating total time
+	
 	printf("\nTime taken: %f", total_time);
 
     return 0;
