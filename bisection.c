@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<math.h>
 #include<time.h>
+#include<stdlib.h>
 
 float fun(float [], int, float );
 
@@ -32,8 +33,6 @@ printf("Enter the %d coefficients:", o+1);
 for(int i=0;i<=o;i++)
     scanf("%f", &cofs[i]);
 
-start = clock();
-
 while(res==0)
     {
         printf("Enter lower limit: \n");
@@ -48,28 +47,31 @@ while(res==0)
             printf("Enter the limits again! \n");
     }
 
-printf("Enter the number of iterations \n");
-scanf("%d",&n);
+//printf("Enter the number of iterations \n");
+//scanf("%d",&n);
 
-
-while(count<n)
+start = clock();
+res=0;
+while(res==0)
     {
         c = (b+a)/2;
         f = fun(cofs,o,c);
-        if(f<0){
-            a=c;
-            printf("A /n");    
+        if(f<0) {
+            a=c; 
             }
-        else{
+        else {
             b=c;
-            printf("B /n");
-}
+        } 
+        if(abs(f)<0.00001)
+        res=2;
+
         count++;
     }
 
+end = clock();
+printf("Iterations taken: %d \n",count);
 printf("Root value is: \n %f",c);
 
-end = clock();
 	//time count stops 
 	total_time = ((double) (end - start)) /  CLOCKS_PER_SEC;
 	//calulate total time
