@@ -57,7 +57,7 @@ while(1)
 {
 f = pow((fun(cofsf,o,x)/(-1*den)),(1/p));
 
-if(abs(x-f)<0.00001)
+if(fabs(x-f)<0.00001)
 break;
 x=f;
 

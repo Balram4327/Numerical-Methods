@@ -68,7 +68,7 @@ while(res==0)
 
         c = c - (f / df);
    
-         if(abs(f)<0.00001)
+         if(fabs(f)<0.00001)
         res=2;
 
         count++;

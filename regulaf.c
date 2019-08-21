@@ -59,7 +59,7 @@ while(res==0)
             b=c;
         else
             a=c;
-        if(abs(f)<0.00001)
+        if(fabs(f)<0.00001)
         res=2;
 
         count++;
