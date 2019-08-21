@@ -2,13 +2,19 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include<time.h>
 
 float fun (float [], int , float );
 
 int main()
 {
+
+double total_time;
+clock_t start, end;
+
 int o;
 int res = 0;
+int count = 0;
 
 printf("Enter order of the polynomial \n");
 scanf("%d",&o);
@@ -31,7 +37,6 @@ if(cofs[i]!=0)
 den = cofs[i];
 p = (float) o-i;
 res = i;
-//printf("%d %d %f %d \n",o,i,p,res);
 break;
 }
 }
@@ -47,16 +52,25 @@ else
 printf("Enter the initial value: ");
 scanf("%f",&x);
 
+start = clock();
 while(1)
 {
 f = pow((fun(cofsf,o,x)/(-1*den)),(1/p));
-printf("%f %f \n",f,x);
+
 if(abs(x-f)<0.00001)
 break;
 x=f;
+
+count++;
 }
 
+end = clock(); //time count stops 
+printf("Iterations taken: %d \n",count);
 printf("The root is: %f \n",x);
+
+total_time = ((double) (end - start)) /  CLOCKS_PER_SEC; //calculating total time
+	
+	printf("\nTime taken: %f", total_time);
 
 return 0;
 
