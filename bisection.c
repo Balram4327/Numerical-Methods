@@ -60,7 +60,7 @@ while(res==0)
         else {
             b=c;
         } 
-        if(fabs(f)<0.00001)
+        if(fabs(f)<0.000001)
         res=2;
 
         count++;

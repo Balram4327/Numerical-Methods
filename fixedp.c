@@ -56,12 +56,14 @@ start = clock();
 while(1)
 {
 f = pow((fun(cofsf,o,x)/(-1*den)),(1/p));
-
-if(fabs(x-f)<0.00001)
+printf("%f %f \n",f,x);
+printf("%f %f %f \n",fun(cofsf,o,x),den, p);
+if(fabs(x-f)<0.01)
 break;
 x=f;
 
 count++;
+
 }
 
 end = clock(); //time count stops 
