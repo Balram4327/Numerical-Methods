@@ -1,3 +1,4 @@
+//Gaussian Elimination with scaled partial pivoting 
 #include<stdio.h>
 
 int main()
