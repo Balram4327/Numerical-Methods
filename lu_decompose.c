@@ -39,7 +39,7 @@ float temp;
                 if(k==-1)
                 temp = 0;
 
-                else
+                else if(k!=j&&k!=i)
                 temp = temp + L[i][k]*U[k][j];
             }
 
