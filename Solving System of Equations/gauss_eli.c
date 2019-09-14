@@ -1,4 +1,4 @@
-//Gaussian Elimination with scaled partial pivoting 
+//Gaussian Elimination
 #include<stdio.h>
 
 int main()
@@ -42,27 +42,6 @@ int max =0;
 int idx;
     for(int k=1;k<o;k++)
     {
-    //Partial pivoting start
-        for(int f=0;f<o;f++)
-        if(mat[f][k-1]>max)
-        {
-            max = mat[f][k-1];
-            idx = f;
-        }
-
-        if(idx>k-1)
-        {
-            for(int f = 0;f<o;f++)
-            {
-                temp[f] = mat[k-1][f];
-                mat[k-1][f] = mat[idx][f];
-                mat[idx][f] = temp [f];
-            }
-            temp1 = smat[k-1];
-            smat[k-1] = smat[idx];
-            smat[idx] = temp1;
-        }
-    //Partial pivoting end
 
         for(int i=k;i<o;i++)
         {
