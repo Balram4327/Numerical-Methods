@@ -39,28 +39,25 @@ int main()
 
 float s[o];
 float max;
-for(int l=0;l<o;l++)
-{
-    max = mat[l][0];
-    for(int m=0;m<o;m++)
-    {
-        if(max<mat[l][m])
-        max = mat[l][m];
-
-        s[l] = max;
-    }
-}
-
-for(int l=0;l<o;l++)
-printf("S value: %f \n",s[l]);
 
 int idx = 0;
     for(int k=1;k<o;k++)
     {
-    //Partial pivoting start
+        for(int l=0;l<o;l++)
+            {
+                max = mat[l][0];
+                for(int m=0;m<o;m++)
+                    {
+                        if(max<mat[l][m])
+                        max = mat[l][m];
+
+                        s[l] = max; 
+                    }
+            }       
+
         max = mat[0][k-1]/s[0];
         for(int f=0;f<o;f++)
-        if((mat[f][k-1]/s[f])>max)
+        if(((mat[f][k-1]/s[f])>max)&&mat[f][k-1]!=0)
         {
             max = (mat[f][k-1]/s[f]);
             idx = f;
@@ -78,7 +75,7 @@ int idx = 0;
             smat[k-1] = smat[idx];
             smat[idx] = temp1;
         }
-    //Partial pivoting end
+
 
         for(int i=k;i<o;i++)
         {
