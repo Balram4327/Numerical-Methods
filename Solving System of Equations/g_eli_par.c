@@ -43,6 +43,7 @@ int idx;
     for(int k=1;k<o;k++)
     {
     //Partial pivoting start
+        max = mat[0][k-1];
         for(int f=0;f<o;f++)
         if(mat[f][k-1]>max)
         {
@@ -73,6 +74,7 @@ int idx;
             }
             smat[i] = smat[i] - smat[k-1]*(coff/mat[k-1][k-1]);
         }
+
     }
 
     printf("Processed \n");
