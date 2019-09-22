@@ -8,6 +8,7 @@ int main()
     float A[n][n];
     float L[n][n];
     float U[n][n];
+    float sol[n];
 
     printf("Enter the matrix: \n");
     for(int i=0;i<n;i++)
@@ -25,6 +26,13 @@ int main()
             else
             L[i][j] = 0;
         }
+    }
+
+    printf("Enter the solution matrix: \n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%f",&sol[i]);
+
     }
 
 
@@ -56,7 +64,7 @@ float temp;
         }
     }
 
-printf("L Matrix: \n");
+printf("\n L Matrix: \n");
 for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++)
@@ -66,7 +74,7 @@ for(int i=0;i<n;i++)
         printf("\n");
     }
 
-printf("U Matrix: \n");
+printf("\n U Matrix: \n");
 for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++)
@@ -74,5 +82,34 @@ for(int i=0;i<n;i++)
             printf("%f ",U[i][j]);
         }
         printf("\n");
-    }    
+    } 
+
+float Y[n],X[n];
+float sum;
+Y[0] = sol[0];
+
+for(int i=1;i<n;i++)
+{
+    sum = 0;
+    for(int j=0;j<i;j++)
+    {
+        sum = L[i][j]*Y[j] + sum;
+    }
+    Y[i] = sol[i] - sum;
+}
+
+X[n-1] = Y[n-1]/U[n-1][n-1];
+for(int i=n-2;i>-1;i--)
+{
+    sum = 0;
+    for(int j=n-1;j>i;j--)
+    {
+        sum = U[i][j]*X[j] + sum;
+    }
+    X[i] = (Y[i] - sum)/U[i][i];
+}
+
+printf("Solution: ");
+for(int i=0;i<n;i++)
+printf("%f ",X[i]);
 }
