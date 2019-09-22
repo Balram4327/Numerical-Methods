@@ -55,6 +55,7 @@ while(res==0)
         c = ( (fun(cofs,o,a)*(a-b))/(fun(cofs,o,b)-fun(cofs,o,a)) + a);
         f = fun(cofs,o,c);
 
+    printf("C: %f \n",c);
         if(f*(fun(cofs,o,a))<0)
             b=c;
         else
