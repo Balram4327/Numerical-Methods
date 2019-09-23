@@ -1,3 +1,4 @@
+//Gauss Seidel Method to solve system of linear equations
 #include<stdio.h>
 
 int main()
@@ -25,8 +26,8 @@ int main()
     for(int i=0;i<n;i++)
     {
         scanf("%f",&B[i]);
+        X[i] = 0.0;
     }
-    X[0] = 0.0;
 
     for(int k=0;k<10;k++)
     {
