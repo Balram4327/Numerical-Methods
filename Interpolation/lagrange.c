@@ -1,51 +1,48 @@
-// C++ program for implementation of Lagrange's Interpolation 
-#include<bits/stdc++.h> 
-using namespace std; 
+//Program for Lagrange Interpolation
+#include<stdlib.h>
+#include<stdio.h>
 
-// To represent a data point corresponding to x and y = f(x) 
-struct Data 
-{ 
-	int x, y; 
-}; 
+float interpolate(float [], int, int, float);
 
-// function to interpolate the given data points using Lagrange's formula 
-// xi corresponds to the new data point whose value is to be obtained 
-// n represents the number of known data points 
-double interpolate(Data f[], int xi, int n) 
-{ 
-	double result = 0; // Initialize result 
+int main()
+{
+	int n;
+	n=7; //Default number
+	float data[n];
 
-	for (int i=0; i<n; i++) 
-	{ 
-		// Compute individual terms of above formula 
-		double term = f[i].y; 
-		for (int j=0;j<n;j++) 
-		{ 
-			if (j!=i) 
-				term = term*(xi - f[j].x)/double(f[i].x - f[j].x); 
-		} 
+//Default data
+	data[0] = 0.0;
+	data[1] = 1.6;
+	data[2] = 3.8;
+	data[3] = 4.5;
+	data[4] = 6.3;
+	data[5] = 9.2;
+	data[6] = 10.0;
+	
+	int j=3;
 
-		// Add current term to result 
-		result += term; 
-	} 
+	float res, dp;
 
-	return result; 
-} 
+	dp = 1;
 
-// driver function to check the program 
-int main() 
-{ 
-	// creating an array of 4 known data points 
-	Data f[] = {{0,2}, {1,3}, {2,12}, {5,147}}; 
+	res = interpolate(data, j, n, dp);
 
-	int k;
-	printf("Enter the value of x");
-	scanf("%d",k);
+	printf("The value at 1 is: %f",res);
 
+	return 0;
+}
 
-	// Using the interpolate function to obtain a data point 
-	// corresponding to x=3 
-	cout << "Value of f is : " << interpolate(f, k, 5); 
+float interpolate(float data[], int j, int n, float dp)
+{
+	float num = 1, den =1;
 
-	return 0; 
-} 
+	for( int i=0;i<=n;i++)
+		if(i!=j)
+		num = num * (dp - data[i]);
+
+	for( int i=0;i<=n;i++)
+		if(i!=j)
+		den = den * (data[j] - data[i]);
+
+	return num/den;
+}

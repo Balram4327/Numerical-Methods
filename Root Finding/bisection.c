@@ -9,29 +9,27 @@ float fun(float [], int, float );
 int main()
 {
 
-double total_time;
-clock_t start, end;
-
+double total_time; // to store total calculated time taken to find the root
+clock_t start, end; 
 
 float a,b; //range vaules 
 float c; //root value
 
 int o; //order of the polynomial
 
-float f;
+float f; //to store function value
 int res=0;
 int count=0;
 
+float cofs[o]; //coefficients of the polynomial
 
 printf("Enter order of the polynomial \n");
 scanf("%d",&o);
 
-float cofs[o];
-
 printf("Enter the %d coefficients:", o+1);
 
 for(int i=0;i<=o;i++)
-    scanf("%f", &cofs[i]);
+scanf("%f", &cofs[i]);
 
 while(res==0)
     {
@@ -59,7 +57,7 @@ while(res==0)
             }
         else {
             b=c;
-        } 
+            } 
         if(fabs(f)<0.000001)
         res=2;
 

@@ -1,4 +1,4 @@
-//Gauss Jacobi Method to solve system of linear equations
+//Gauss Seidel Method to solve system of linear equations
 #include<stdio.h>
 
 int main()
@@ -11,8 +11,8 @@ int main()
     float A[n][n];
     float B[n];
     float X[n];
-    float XO[n];
     float sum;
+    float w = 0.9;
 
     printf("Enter the matrix(A): \n");
     for(int i=0;i<n;i++)
@@ -27,7 +27,7 @@ int main()
     for(int i=0;i<n;i++)
     {
         scanf("%f",&B[i]);
-        XO[i] = 0.0;
+        X[i] = 0.0;
     }
 
     for(int k=0;k<10;k++)
@@ -38,24 +38,17 @@ int main()
         for(int j=0;j<n;j++)
         {
             if(i!=j)
-            sum = sum + (A[i][j]*XO[j]);
+            sum = sum + (A[i][j]*X[j]);
         }
-        X[i] = (B[i] - sum)/A[i][i];
-    }
-
-    for(int i=0;i<n;i++)
-    {
-    XO[i] = X[i];
-
-    printf("%f ",X[i]);
-    }
+        X[i] = (1-w)*X[i] + w*(B[i] - sum)/A[i][i];
+        printf("%f ",X[i]);
+    }    
     printf("\n");
     }
-
-
 
     printf("Final Solution: \n");
     for(int i=0;i<n;i++)
     printf("%f ",X[i]);
 
+return 0;
 }
